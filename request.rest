@@ -1,0 +1,30 @@
+POST http://localhost:4000/v1/login
+Content-Type: application/json
+
+{
+    "email": "Fatihulil@gmail.com",
+    "password": "123456aB"
+}
+
+###
+
+
+POST http://localhost:4000/v1/token 
+Content-Type: application/json
+
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidWxpbGFsYmFiIiwiaWF0IjoxNjA3MjM0NzYyfQ.QlGrRxcJ7LT5Sdvk4YtPRPgQLt8Wz69TasTPNWxgvbI"
+}
+
+###
+
+GET http://localhost:4000/v1/test 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidWxpbGFsYmFiIiwiaWF0IjoxNjA3MjM0NzMxLCJleHAiOjE2MDcyMzQ3NzZ9.qwOk0nARFCe7oVbVATXNcVxyiMRvWha0dSxMML85rmg
+
+###
+DELETE  http://localhost:4000/v1/logout 
+Content-Type: application/json
+
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidWxpbGFsYmFiIiwiaWF0IjoxNjA3MjM0NzYyfQ.QlGrRxcJ7LT5Sdvk4YtPRPgQLt8Wz69TasTPNWxgvbI"
+}
