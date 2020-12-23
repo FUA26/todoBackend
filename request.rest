@@ -2,7 +2,7 @@ POST http://localhost:4000/v1/login
 Content-Type: application/json
 
 {
-    "email": "Fatihulil@gmail.com",
+    "email": "Fatihulil15@gmail.com",
     "password": "123456aB"
 }
 
@@ -27,4 +27,13 @@ Content-Type: application/json
 
 {
 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidWxpbGFsYmFiIiwiaWF0IjoxNjA3MjM0NzYyfQ.QlGrRxcJ7LT5Sdvk4YtPRPgQLt8Wz69TasTPNWxgvbI"
+}
+
+###
+GET http://localhost:4000/v1/get-website
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidWxpbGFsYmFiIiwiaWF0IjoxNjA3MzExNTYyLCJleHAiOjE2MDczMTI0NjJ9.79rGYDbXJLZW_D2OoZIJ3Lit6Iq80YN86Typ6PiW-aY
+
+{
+    "id": "2"
 }
