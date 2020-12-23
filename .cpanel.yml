@@ -1,0 +1,7 @@
+deployment:
+ 
+ tasks:
+ 
+ - export DEPLOYPATH=/home/sepasang/api.fatihulil.com
+ 
+ - /usr/bin/rsync -Paz * $DEPLOYPATH --delete
