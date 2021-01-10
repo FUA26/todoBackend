@@ -1,54 +1,11 @@
 bcrypt = require('bcrypt')
 const jwt = require("jsonwebtoken");
 const { logger } = require('../fuctions/log');
-const { login,register,checkUser } = require("../models/login")
+const { login } = require("../models/login")
 let refreshTokens = []
 
 
 module.exports ={
-    register:(req, res)=>{
-        const data = req.body;
-        var hashPassword = bcrypt.hashSync(data.password, process.env.SALT);
-        data.hashPassword = hashPassword
-
-        checkUser(data,(err,cb)=>{
-            if (err) {
-                console.log(err)
-            }
-
-            console.log(cb)
-            console.log(cb.length == 0)
-            if(cb.length == 0){
-                
-                console.log(cb)
-                console.log(data)
-                register(data,(err,cb)=>{
-                    if (err) {
-                        console.log(err)
-                    }
-                    let data = {
-                        code: '00',
-                        message: 'Register Success',
-                        data:{
-                        }
-                    }
-                    // logger(req,data)
-                    return res.status(200).json(data)
-                })
-            }else{
-                console.log(cb)
-                let data = {
-                    code: '00',
-                    message: 'Email atau Username telah digunakan',
-                    data:{
-                    }
-                }
-                // logger(req,data)
-                return res.status(200).json(data)
-            }
-        }) 
-       
-    },
     login: (req,res,next)=>{
         const data = req.body.email;
         login(data,(err,cb)=>{
@@ -73,14 +30,16 @@ module.exports ={
             });
 
             if (!cekPass) {
-                // const user = {name:cb[0].username}
-                // const aksesToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '45s' })
-                // const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
-                // refreshTokens.push(refreshToken)
+                const user = {name:cb[0].username}
+                const aksesToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' })
+                const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
+                refreshTokens.push(refreshToken)
                 let data = {
                     code: '00',
                     message: 'Login Succes!!',
                     data:{
+                        accessToken: aksesToken,
+                        refreshToken: refreshToken
                     }
                 }
                 logger(req,data)
@@ -112,6 +71,6 @@ module.exports ={
             message: 'LOGOUT'
         }
         logger(req,data)
-        res.sendStatus(204).json(data)
+        res.sendStatus(204)
     }
 }

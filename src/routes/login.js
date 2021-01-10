@@ -3,17 +3,15 @@ const router = express.Router();
 const jwt = require('jsonwebtoken')
 const { checkToken } = require('../middleware/authToken');
 
-const { login,refreshToken, logout } = require('../controllers/login');
+const { login,refreshToken, logout, register } = require('../controllers/login');
 
 
 
 router.post('/token', refreshToken)
 router.delete('/logout', logout)
 router.post('/login',login)
-router.get('/test',checkToken,(req,res)=>{
-    return res.json({
-        message: "Bisa Dong"
-    })
-})
+router.post('/register', register)
+
+
 
 module.exports = router;

@@ -7,7 +7,7 @@ const { checkToken } = require('../middleware/authToken');
 
 
 
-router.get('/get-website',checkToken, getGeneral)
+router.get('/get-website', getGeneral)
 
 
 module.exports = router;

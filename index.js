@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const database = require('./db-connection')
 const app = express();
 const login = require('./src/routes/login')
-const general = require('./src/routes/general');
+const project = require('./src/routes/project');
 const { logger } = require('./src/fuctions/log');
 
 app.use(bodyParser.json());
@@ -20,8 +20,8 @@ app.use((req, res, next) =>{
 })
 
 app.use('/v1',login)
-app.use('/v1',general)
-
+app.use('/v1/project',project)
+ 
 
 app.use((error, req, res, next) => {
     const status = error.errorStatus || 500;
