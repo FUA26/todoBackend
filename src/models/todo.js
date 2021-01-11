@@ -36,7 +36,7 @@ module.exports = {
     },
     UPDATE_TODO:(data,callBack)=>{
         db.query(
-            `UPDATE todo SET title = ?, des= ?, do_date= ?, start= ?, end= ?, status= ?, priority= ? where id = ?`,[data.title,data.des,data.doDate,data.start,data.end,data.status,data.priority],
+            `UPDATE todo SET title = ?, des= ?, do_date= ?, start= ?, end= ?, status= ?, priority= ? where id = ?`,[data.title,data.des,data.doDate,data.start,data.end,data.status,data.priority,data.id],
             
             (err, res, field)=>{
             if (err) {

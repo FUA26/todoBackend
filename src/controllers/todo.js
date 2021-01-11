@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { logger } = require('../fuctions/log');
-const { ADD_TODO, GET_TODO, DELETE_TODO } = require("../models/todo");
+const { ADD_TODO, GET_TODO, DELETE_TODO, UPDATE_TODO, CHAGE_STATUS } = require("../models/todo");
 
 
 module.exports ={
@@ -57,40 +57,40 @@ module.exports ={
             return res.status(200).json(data)
         });
     },
-    // updateProject:(req,res)=>{
-    //     const data = req.body;
-    //     console.log(data)
-    //     UPDATE_PROJECT(data,(err,cb)=>{
-    //          if (err) {
-    //              console.log(err)
-    //              throw new Error(err)
-    //          }
-    //          let data = {
-    //              code: '00',
-    //              message: 'Update Project Success',
-    //              data:{
-    //              }
-    //          }
-    //          // logger(req,data)
-    //          return res.status(200).json(data)
-    //      });
-    //  },
-    //  statusProject:(req,res)=>{
-    //      const data = req.body;
-    //      console.log(data)
-    //      CHAGE_STATUS(data,(err,cb)=>{
-    //           if (err) {
-    //               console.log(err)
-    //               throw new Error(err)
-    //           }
-    //           let data = {
-    //               code: '00',
-    //               message: 'Update Project Success',
-    //               data:{
-    //               }
-    //           }
-    //           // logger(req,data)
-    //           return res.status(200).json(data)
-    //       });
-    //   },
+    updateTodo:(req,res)=>{
+        const data = req.body;
+        // console.log(data)
+        UPDATE_TODO(data,(err,cb)=>{
+             if (err) {
+                 console.log(err)
+                 throw new Error(err)
+             }
+             let data = {
+                 code: '00',
+                 message: 'Update Todo Success',
+                 data:{
+                 }
+             }
+             // logger(req,data)
+             return res.status(200).json(data)
+         });
+     },
+     statusTodo:(req,res)=>{
+         const data = req.body;
+         console.log(data)
+         CHAGE_STATUS(data,(err,cb)=>{
+              if (err) {
+                  console.log(err)
+                  throw new Error(err)
+              }
+              let data = {
+                  code: '00',
+                  message: 'Update Project Success',
+                  data:{
+                  }
+              }
+              // logger(req,data)
+              return res.status(200).json(data)
+          });
+      },
 }

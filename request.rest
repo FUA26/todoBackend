@@ -96,7 +96,8 @@ Content-Type: application/json
 
 
 ### SERVICE TODO ###
-
+GET  http://localhost:4000/v1/todo/get-todo
+Content-Type: application/json
 
 
 ###
@@ -111,6 +112,22 @@ Content-Type: application/json
     "start" :"",
     "end" :"",
     "status" :"1",
-    "priority" :"2",
+    "priority" :"2"
+
+}
+
+###
+PUT  http://localhost:4000/v1/todo/update-todo
+Content-Type: application/json
+
+{
+    "id": "1",
+    "title": "Task 1 Edited",
+    "des": "Task pertama",
+    "doDate" :"",
+    "start" :"",
+    "end" :"",
+    "status" :"1",
+    "priority" :"2"
 
 }
