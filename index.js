@@ -5,7 +5,9 @@ const database = require('./db-connection')
 const app = express();
 const login = require('./src/routes/login')
 const project = require('./src/routes/project');
+const todo = require('./src/routes/todo');
 const { logger } = require('./src/fuctions/log');
+
 
 app.use(bodyParser.json());
 
@@ -21,6 +23,7 @@ app.use((req, res, next) =>{
 
 app.use('/v1',login)
 app.use('/v1/project',project)
+app.use('/v1/todo',todo)
  
 
 app.use((error, req, res, next) => {

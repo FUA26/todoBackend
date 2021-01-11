@@ -89,6 +89,28 @@ Content-Type: application/json
 
 {
     "id"        : "1",
-    "status"    : "3"
+    "status"    : "2"
 }
 ###
+
+
+
+### SERVICE TODO ###
+
+
+
+###
+POST  http://localhost:4000/v1/todo/add-todo
+Content-Type: application/json
+
+{
+    "projectID": "1",
+    "title": "Task 1",
+    "des": "Task pertama",
+    "doDate" :"",
+    "start" :"",
+    "end" :"",
+    "status" :"1",
+    "priority" :"2",
+
+}
