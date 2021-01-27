@@ -56,15 +56,14 @@ module.exports ={
                 console.log(err)
             }
 
-            if (cb === null) {
+            if (cb === null || cb=="") {
                 let data = {
-                    code: '00',
+                    code: '01',
                     message: 'Username dan Pasword tidak sesuai'
                 }
                 logger(req,data)
                 return res.status(200).json(data)
             } 
-
 
             let hash = cb[0].password;
             hash = hash.replace(/^\$2y(.+)$/i, '$2a$1');
@@ -80,14 +79,13 @@ module.exports ={
                 let data = {
                     code: '00',
                     message: 'Login Succes!!',
-                    data:{
-                    }
+                    data:cb[0]
                 }
                 logger(req,data)
                 return res.status(200).json(data)
             } else {
                 let data = {
-                    code: '00',
+                    code: '01',
                     message: 'Username dan Pasword tidak sesuai'
                 }
                 logger(req,data)

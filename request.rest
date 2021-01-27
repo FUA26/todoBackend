@@ -59,7 +59,7 @@ POST  http://localhost:4000/v1/project/add-project
 Content-Type: application/json
 
 {
-    "nama": "Project TODOS 2",
+    "title": "Project TODOS 2",
     "des": "project personal untuk sandbox",
     "idUser": "11"
 }
@@ -84,12 +84,12 @@ Content-Type: application/json
 }
 ###
 
-PUT http://localhost:4000/v1/project/chage-status
+POST http://localhost:4000/v1/project/chage-status
 Content-Type: application/json
 
 {
-    "id"        : "1",
-    "status"    : "2"
+    "id"        : "3",
+    "status"    : "1"
 }
 ###
 
@@ -106,8 +106,8 @@ Content-Type: application/json
 
 {
     "projectID": "1",
-    "title": "Task 1",
-    "des": "Task pertama",
+    "title": "Task ",
+    "des": "Task dummy",
     "doDate" :"",
     "start" :"",
     "end" :"",
@@ -117,17 +117,35 @@ Content-Type: application/json
 }
 
 ###
-PUT  http://localhost:4000/v1/todo/update-todo
+POST  http://localhost:4000/v1/todo/update-todo
 Content-Type: application/json
 
 {
-    "id": "1",
+    "id": "17",
     "title": "Task 1 Edited",
-    "des": "Task pertama",
-    "doDate" :"",
+    "des": "Task pertama Edited",
+    "doDate" :"2021-02-13T17:00:00.000Z",
     "start" :"",
     "end" :"",
     "status" :"1",
     "priority" :"2"
 
+}
+
+###
+DELETE  http://localhost:4000/v1/todo/delete-todo
+Content-Type: application/json
+
+{
+    "id": "19"
+}
+
+###
+
+POST  http://localhost:4000/v1/todo/chage-status
+Content-Type: application/json
+
+{
+    "id": "17",
+    "status" :"2"
 }

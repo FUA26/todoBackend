@@ -14,7 +14,7 @@ module.exports = {
     },
     ADD_PROJECT: (data,callBack)=>{
         db.query(
-            `INSERT INTO project (id, nama, des, id_user, status, created_at, update_at) VALUES ('',?,?,?,0,null,null)`,[data.nama,data.des,data.idUser,],
+            `INSERT INTO project (id, title, des, id_user, status, created_at, update_at) VALUES ('',?,?,?,0,null,null)`,[data.title,data.des,data.idUser,],
             
             (err, res, field)=>{
             if (err) {
@@ -36,7 +36,7 @@ module.exports = {
     },
     UPDATE_PROJECT:(data,callBack)=>{
         db.query(
-            `UPDATE project SET nama = ?, des = ?, status=? where id = ?`,[data.nama,data.des,data.status,data.id],
+            `UPDATE project SET title = ?, des = ?, status=? where id = ?`,[data.title,data.des,data.status,data.id],
             
             (err, res, field)=>{
             if (err) {

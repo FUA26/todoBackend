@@ -3,7 +3,7 @@ const db = require('../../db-connection')
 module.exports = {
     login: (email,callBack)=>{
         db.query(
-            `select * from todo where email = ?`,[email],
+            `select * from user where email = ?`,[email],
             (err, res, field)=>{
             if (err) {
                 callBack(err);

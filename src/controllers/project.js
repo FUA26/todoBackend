@@ -71,7 +71,7 @@ module.exports ={
                  data:{
                  }
              }
-             // logger(req,data)
+             logger(req,data)
              return res.status(200).json(data)
          });
      },
@@ -89,7 +89,7 @@ module.exports ={
                   data:{
                   }
               }
-              // logger(req,data)
+              logger(req,data)
               return res.status(200).json(data)
           });
       },

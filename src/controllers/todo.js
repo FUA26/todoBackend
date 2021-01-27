@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { dateOnly } = require("../fuctions/dateConverter");
 const { logger } = require('../fuctions/log');
 const { ADD_TODO, GET_TODO, DELETE_TODO, UPDATE_TODO, CHAGE_STATUS } = require("../models/todo");
 
@@ -12,10 +13,56 @@ module.exports ={
                 console.log(err)
                 throw new Error(err)
             }
+
+            let backlog =[]
+            let todo =[]
+            let onprogress=[]
+            let done=[]
+            cb.map(data =>{
+                switch (data.status) {
+                    case 1:
+                        backlog.push(data)
+                        break;
+                    case 2:
+                        todo.push(data)
+                        break;
+                    case 3:
+                        onprogress.push(data)
+                        break;
+                    case 4:
+                        done.push(data)
+                        break;
+                    default:
+                        break;
+                }
+            })
+            let datas=[
+                {
+                    title: "Backlog",
+                    id:0,
+                    todos:backlog
+                },
+                {
+                    title: "Todo",
+                    id:1,
+                    todos:todo
+                },
+                {
+                    title: "On Progress",
+                    id:2,
+                    todos:onprogress
+                },
+                {
+                    title: "Done",
+                    id:3,
+                    todos:done
+                }
+            ]
+
             let data = {
                 code: '00',
                 message: 'GET Todo Success',
-                data: cb
+                data: datas
             }
             // logger(req,data)
             return res.status(200).json(data)
@@ -23,7 +70,6 @@ module.exports ={
     },
     addTodo:(req,res)=>{
         const data = req.body;
-        // console.log(data)
         ADD_TODO(data,(err,cb)=>{
             if (err) {
                 console.log(err)
@@ -41,7 +87,7 @@ module.exports ={
     },
     deleteTodo:(req,res)=>{
        const data = req.body;
-    //    console.log(data)
+       console.log("Data",data)
         DELETE_TODO(data,(err,cb)=>{
             if (err) {
                 console.log(err)
@@ -53,13 +99,15 @@ module.exports ={
                 data:{
                 }
             }
-            // logger(req,data)
+            logger(req,data)
             return res.status(200).json(data)
         });
     },
     updateTodo:(req,res)=>{
         const data = req.body;
-        // console.log(data)
+        console.log(data.doDate)
+        data.doDate = dateOnly(data.doDate)
+        console.log(data)
         UPDATE_TODO(data,(err,cb)=>{
              if (err) {
                  console.log(err)
@@ -71,7 +119,8 @@ module.exports ={
                  data:{
                  }
              }
-             // logger(req,data)
+             
+             logger(req,data)
              return res.status(200).json(data)
          });
      },
@@ -89,7 +138,6 @@ module.exports ={
                   data:{
                   }
               }
-              // logger(req,data)
               return res.status(200).json(data)
           });
       },

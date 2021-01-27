@@ -7,19 +7,18 @@ const login = require('./src/routes/login')
 const project = require('./src/routes/project');
 const todo = require('./src/routes/todo');
 const { logger } = require('./src/fuctions/log');
-
+const cors = require('cors')
 
 app.use(bodyParser.json());
 
 
-
-app.use((req, res, next) =>{
-    res.setHeader('Access-Control-Allow-Origin','*');
-    res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Alloe-Headers','Content-Type, Authorization')
-    next()
-
-})
+app.use(cors())
+// app.use((req, res, next) =>{
+//     res.setHeader('Access-Control-Allow-Origin','*');
+//     res.setHeader('Access-Control-Allow-Methods','GET, POST, PUT, PATCH, DELETE, OPTIONS');
+//     res.setHeader('Access-Control-Alloe-Headers','Content-Type, Authorization')
+//     next()
+// })
 
 app.use('/v1',login)
 app.use('/v1/project',project)

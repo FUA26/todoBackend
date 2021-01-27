@@ -8,6 +8,6 @@ router.get('/get-project', getProject)
 router.post('/add-project', addProject)
 router.delete('/delete-project',deleteProject)
 router.put('/update-project',updateProject)
-router.put('/chage-status',statusProject)
+router.post('/chage-status',statusProject)
 
 module.exports = router;

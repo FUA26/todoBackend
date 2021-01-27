@@ -7,8 +7,8 @@ const { checkToken } = require('../middleware/authToken');
 
 router.get('/get-todo', getTodo)
 router.post('/add-todo', addTodo)
-router.delete('/delete-todo',deleteTodo)
-router.put('/update-todo',updateTodo)
-router.put('/chage-status',statusTodo)
+router.post('/delete-todo',deleteTodo)
+router.post('/update-todo',updateTodo)
+router.post('/chage-status',statusTodo)
 
 module.exports = router;
